@@ -1,0 +1,276 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 50%, #93c5fd 100%);
+    color: #1e293b;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.consulta-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 0.8s ease;
+}
+
+.consulta-container h2 {
+    color: #1e3a8a;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+#ruc {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 3px solid rgba(59, 130, 246, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e293b;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#ruc:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+#ruc::placeholder {
+    color: #64748b;
+    font-weight: 400;
+}
+
+button {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #3b82f6, #6366f1);
+}
+
+#resultado {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    animation: slideInUp 0.6s ease;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#resultado p {
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: left;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+#resultado p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+#resultado strong {
+    color: #1e40af;
+    font-weight: 700;
+    display: inline-block;
+    min-width: 180px;
+}
+
+#resultado p[style*="red"] {
+    color: #dc2626 !important;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: none;
+    font-size: 1.1rem;
+}
+
+/* Estado de consulta */
+#resultado p:not([style*="red"]):first-child {
+    color: #3b82f6 !important;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: none;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .consulta-container {
+        padding: 25px;
+        margin: 10px;
+        max-width: 100%;
+    }
+    
+    .consulta-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    #ruc, button {
+        font-size: 1rem;
+        padding: 12px 16px;
+    }
+    
+    #resultado {
+        padding: 15px;
+    }
+    
+    #resultado strong {
+        min-width: 140px;
+        font-size: 0.9rem;
+    }
+    
+    #resultado p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .consulta-container {
+        padding: 20px;
+    }
+    
+    .consulta-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    
+    #ruc, button {
+        font-size: 0.95rem;
+        padding: 10px 14px;
+    }
+    
+    #resultado {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+    
+    #resultado strong {
+        min-width: 120px;
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 4px;
+    }
+    
+    #resultado p {
+        font-size: 0.85rem;
+        padding: 6px 0;
+    }
+}
+
+/* Animaciones */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Efecto hover en resultados */
+#resultado p:not([style*="red"]):hover {
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 6px;
+    padding: 8px 12px;
+    transform: translateX(5px);
+    transition: all 0.2s ease;
+}
+
+/* Separador visual */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+    margin: 15px 0;
+    border-radius: 1px;
+}

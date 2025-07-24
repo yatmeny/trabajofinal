@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Declaración del tipo de documento HTML5 -->
+  <meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 para soporte internacional -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuración responsiva para dispositivos móviles -->
+  <title>Bienvenida</title> 
+  <link rel="stylesheet" href="css/estilos_bienvenida.css"> <!-- Enlace al archivo CSS externo -->
+</head>
+<body>
+  <!-- Contenedor principal de la página -->
+  <div class="container">
+    <!-- Títulos de bienvenida -->
+    <h2>¡Bienvenido/a!</h2>  
+    <h2>Sistema de FRANKLIN GUSTAVO CONDORI SULLASI</h2>
+    
+    <!-- Sección de información del usuario -->
+    <div class="perfil-usuario">
+      <!-- Imagen de perfil del usuario (se carga dinámicamente) -->
+      <img id="foto" alt="Foto de perfil" src="">
+      
+      <!-- Información del usuario (se carga desde localStorage) -->
+      <p id="nombre" class="info-usuario"></p>
+      <p id="email" class="info-usuario"></p>
+    </div>
+    
+    <!-- Sección de opciones de consulta con botones reorganizados -->
+    <div class="consulta-opciones">
+      <!-- Botón para consultar información de DNI -->
+      <button class="btn-consulta" onclick="navegarA('consultas/dni.html')" title="Realizar consultas de Documento Nacional de Identidad">
+        <span>🆔</span> Consultar DNI
+      </button>
+      
+      <!-- Botón para consultar información de RUC -->
+      <button class="btn-consulta" onclick="navegarA('consultas/ruc.html')" title="Realizar consultas de Registro Único de Contribuyentes">
+        <span>🏢</span> Consultar RUC
+      </button>
+      
+      <!-- Botón para consultas XML -->
+      <button class="btn-consulta" onclick="navegarA('examenes/examen_xml.html')" title="Procesar y consultar archivos XML">
+        <span>📄</span> Consulta XML
+      </button> 
+      
+      <!-- Botón para consultas JSON -->
+      <button class="btn-consulta" onclick="navegarA('examenes/examen_json.html')" title="Procesar y consultar archivos JSON">
+        <span>📊</span> Consulta JSON
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Función para cargar los datos del usuario desde localStorage al inicializar la página
+    function cargarDatosUsuario() {
+      // Obtener datos almacenados en localStorage
+      const nombre = localStorage.getItem("nombre");
+      const email = localStorage.getItem("email");
+      const foto = localStorage.getItem("foto");
+      
+      // Actualizar elementos del DOM con la información del usuario
+      const elementoNombre = document.getElementById("nombre");
+      const elementoEmail = document.getElementById("email");
+      const elementoFoto = document.getElementById("foto");
+      
+      // Verificar si los elementos existen antes de modificarlos
+      if (elementoNombre) {
+        elementoNombre.innerText = "Nombre: " + (nombre || "No disponible");
+      }
+      
+      if (elementoEmail) {
+        elementoEmail.innerText = "Correo: " + (email || "No disponible");
+      }
+      
+      // Configurar la imagen de perfil
+      if (elementoFoto && foto) {
+        elementoFoto.src = foto;
+        // Si no hay foto, usar una imagen por defecto
+      } else if (elementoFoto) {
+        elementoFoto.src = "https://via.placeholder.com/150x150/cccccc/666666?text=Usuario";
+      }
+    }
+    
+    // Función mejorada para navegación con validación
+    function navegarA(url) {
+      try {
+        // Validar que la URL no esté vacía
+        if (!url) {
+          console.error("URL no proporcionada");
+          return;
+        }
+        
+        // Registrar la navegación para depuración
+        console.log("Navegando a:", url);
+        
+        // Realizar la navegación
+        window.location.href = url;
+      } catch (error) {
+        // Manejo de errores en la navegación
+        console.error("Error al navegar:", error);
+        alert("Error al acceder a la página solicitada");
+      }
+    }
+    
+    // Función que se ejecuta cuando la página termina de cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cargar los datos del usuario
+      cargarDatosUsuario();
+      
+      // Mostrar mensaje de bienvenida en consola (para depuración)
+      console.log("Página de bienvenida cargada correctamente");
+      
+      // Opcional: Verificar si hay datos de usuario
+      const nombre = localStorage.getItem("nombre");
+      if (!nombre) {
+        console.warn("No se encontraron datos de usuario en localStorage");
+      }
+    });
+    
+    // Función para limpiar datos de sesión (opcional)
+    function cerrarSesion() {
+      if (confirm("¿Está seguro de que desea cerrar sesión?")) {
+        localStorage.clear(); // Limpiar todos los datos almacenados
+        window.location.href = "login.html"; // Redirigir al login
+      }
+    }
+  </script>
+</body>
+</html>

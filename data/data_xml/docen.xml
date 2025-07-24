@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<docentes>
+    <docente>
+        <dni>34562766</dni>
+        <nombre>ROBERTO CARLOS</nombre>
+        <apellido>QUISPE</apellido>
+        <edad>45</edad>
+    </docente>
+    <docente>
+        <dni>56894321</dni>
+        <nombre>CARLOS CHAÑI</nombre>
+        <apellido>TACO</apellido>
+        <edad>39</edad>
+    </docente>
+    <docente>
+        <dni>87542344</dni>
+        <nombre>ROBERT VILCA</nombre>
+        <apellido>MAMANI</apellido>
+        <edad>50</edad>
+    </docente>
+    <docente>
+        <dni>240456790</dni>
+        <nombre>JAVIER</nombre>
+        <apellido>OLVEA</apellido>
+        <edad>42</edad>
+    </docente>
+</docentes>

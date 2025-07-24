@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<alumnos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<alumno>
+		<dni>12345678</dni>
+		<nombre>WILBER</nombre>
+		<apellido>QUISPE</apellido>
+		<edad>20</edad>
+	</alumno>
+	<alumno>
+		<dni>8765432</dni>
+		<nombre>FREDY</nombre>
+		<apellido>ANOFRE</apellido>
+		<edad>16</edad>
+	</alumno>
+	<alumno>
+		<dni>9876543</dni>
+		<nombre>CARLOS</nombre>
+		<apellido>CALOR</apellido>
+		<edad>23</edad>
+	</alumno>
+	<alumno>
+		<dni>56789012</dni>
+		<nombre>PEREZ</nombre>
+		<apellido>PEREZ</apellido>
+		<edad>24</edad>
+	</alumno>
+</alumnos>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cursos>
+  <alumno>
+    <id_curso></id_curso>
+    <id_nombre></id_nombre>
+    <n_horas></n_horas>
+  </alumno>
+  <alumno>
+    <id_curso></id_curso>
+    <id_nombre></id_nombre>
+    <n_horas></n_horas>
+  </alumno>
+  <alumno>
+    <id_curso></id_curso>
+    <id_nombre></id_nombre>
+    <n_horas></n_horas>
+  </alumno>
+</cursos>

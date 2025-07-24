@@ -1,0 +1,257 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2563eb 0%, #60a5fa 50%, #93c5fd 100%);
+    color: #1e293b;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Datos del alumno */
+#datos_alumno {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 40px rgba(37, 99, 235, 0.3);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    text-align: center;
+}
+
+#datos_alumno h2 {
+    color: #1e40af;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#datos_alumno h2:first-child {
+    color: #1e3a8a;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+#datos_alumno h2:last-child {
+    color: #3730a3;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Separador */
+hr {
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+    margin: 30px 0;
+    border-radius: 2px;
+}
+
+/* Títulos de secciones */
+h2 {
+    color: #1e3a8a;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 35px 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+/* Contenedor de tablas */
+table {
+    width: 100%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Encabezados de tabla */
+thead th {
+    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    color: white;
+    padding: 18px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid #1e40af;
+}
+
+thead th:first-child {
+    border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/* Efecto gradiente en encabezados */
+thead th:after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0ea5e9, #3b82f6, #6366f1);
+}
+
+/* Celdas del cuerpo */
+tbody td {
+    padding: 15px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* Filas alternadas */
+tbody tr:nth-child(even) {
+    background: rgba(191, 219, 254, 0.4);
+}
+
+tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Efecto hover en filas */
+tbody tr:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover td {
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+/* Estilos específicos por tabla */
+#docentes {
+    border-left: 6px solid #0ea5e9;
+}
+
+#alumnos {
+    border-left: 6px solid #3b82f6;
+}
+
+#curso {
+    border-left: 6px solid #1d4ed8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    #datos_alumno {
+        padding: 20px;
+    }
+    
+    #datos_alumno h2 {
+        font-size: 1.1rem;
+    }
+    
+    #datos_alumno h2:first-child {
+        font-size: 1.3rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin: 25px 0 15px 0;
+    }
+    
+    table {
+        font-size: 0.85rem;
+    }
+    
+    thead th {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+    
+    tbody td {
+        padding: 10px 6px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #datos_alumno h2 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    #datos_alumno h2:first-child {
+        font-size: 1.2rem;
+    }
+    
+    table {
+        font-size: 0.8rem;
+    }
+    
+    thead th {
+        padding: 10px 6px;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+    }
+    
+    tbody td {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animaciones */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#datos_alumno {
+    animation: fadeIn 0.8s ease;
+}
+
+table {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+h2 {
+    animation: fadeIn 0.7s ease;
+}

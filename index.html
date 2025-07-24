@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="css/estilos_login.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+  <div class="login-container">
+    <!-- Contenedor principal del formulario de login -->
+
+    <h2>Iniciar sesión</h2>
+    <!-- Título del formulario -->
+
+    <form id="loginForm" onsubmit="return loginTradicional()">
+      <!-- Formulario de inicio de sesión tradicional con usuario y contraseña -->
+      
+      <input type="text" id="usuario" placeholder="Usuario" required>
+      <!-- Campo de texto para ingresar el nombre de usuario -->
+
+      <input type="password" id="clave" placeholder="Contraseña" required>
+      <!-- Campo para ingresar la contraseña -->
+
+      <button type="submit">Iniciar sesión</button>
+      <!-- Botón para enviar el formulario -->
+    </form>
+
+    <div class="divider"><span>O</span></div>
+    <!-- Línea divisoria con texto "O" para separar métodos de inicio de sesión -->
+
+    <div id="g_id_onload"
+         data-client_id="880648189661-0cd36o8bjqie4adtmrgiqaav3p5crohf.apps.googleusercontent.com"
+         data-context="signin"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+    <!-- Configuración del inicio de sesión con Google: ID del cliente, contexto, función de retorno y si se muestra automáticamente -->
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-size="large">
+    </div>
+    <!-- Botón visual de inicio de sesión con Google con estilo estándar -->
+  </div>
+
+  <script>
+    // Función que se ejecuta cuando se envía el formulario tradicional
+    function loginTradicional() {
+      const user = document.getElementById("usuario").value;
+      // Obtiene el valor del campo usuario
+
+      const pass = document.getElementById("clave").value;
+      // Obtiene el valor del campo contraseña
+
+      if (true) {
+        // Condición simulada, siempre entra (se puede reemplazar por validación real)
+
+        localStorage.setItem("nombre", user);
+        // Guarda el nombre de usuario en el almacenamiento local
+
+        localStorage.setItem("email", user + "@example.com");
+        // Crea y guarda un email ficticio en el almacenamiento local
+
+        window.location.href = "bienvenida.html";
+        // Redirige al usuario a la página de bienvenida
+      } else {
+        alert("Usuario o contraseña incorrectos");
+        // Muestra un mensaje si la validación fallara (en este caso nunca lo hace)
+      }
+      return false;
+      // Previene el envío real del formulario
+    }
+
+    // Función que se ejecuta al iniciar sesión con Google
+    function handleCredentialResponse(response) {
+      const jwt = response.credential;
+      // Obtiene el JWT (token) de Google
+
+      const payload = JSON.parse(atob(jwt.split('.')[1]));
+      // Decodifica el payload (datos del usuario) del JWT
+
+      localStorage.setItem("nombre", payload.name);
+      // Guarda el nombre en el almacenamiento local
+
+      localStorage.setItem("email", payload.email);
+      // Guarda el correo electrónico
+
+      localStorage.setItem("foto", payload.picture);
+      // Guarda la URL de la foto de perfil
+
+      window.location.href = "bienvenida.html";
+      // Redirige al usuario a la página de bienvenida
+    }
+  </script>
+</body>
+</html>

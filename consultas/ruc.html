@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta RUC</title>
+  <link rel="stylesheet" href="../css/estilos_ruc.css">
+</head>
+
+<body>
+  <div class="consulta-container">
+    <h2>Consulta RUC</h2>
+    <input type="text" id="ruc" placeholder="Ingrese RUC de 11 dígitos">
+    <button onclick="consultarRuc()">Consultar</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    async function consultarRuc() {
+      const ruc = document.getElementById("ruc").value.trim();
+      const resultado = document.getElementById("resultado");
+      const token = "0c0a92b87d7040529eb96693ef396440b717b1e38edb90fdf1eaff98b123eacd"; // TU TOKEN
+
+      if (ruc.length !== 11 || isNaN(ruc)) {
+        resultado.innerHTML = "<p style='color:red;'>⚠️ Ingrese un RUC válido de 11 dígitos.</p>";
+        return;
+      }
+
+      resultado.innerHTML = "<p>🔍 Consultando...</p>";
+
+      try {
+        const response = await fetch("https://apiperu.dev/api/ruc", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ ruc: ruc })
+        });
+
+        const json = await response.json();
+
+        if (!json.success || !json.data) {
+          resultado.innerHTML = "<p style='color:red;'>❌ RUC no encontrado o token inválido.</p>";
+          return;
+        }
+
+        const data = json.data;
+
+        resultado.innerHTML = `
+  <p><strong>🔢 RUC:</strong> ${data.ruc || data.numero || 'No disponible'}</p>
+  <p><strong>🏢 Razón Social:</strong> ${data.nombre_o_razon_social || data.razon_social || data.name || 'No disponible'}</p>
+  <p><strong>📍 Dirección:</strong> ${data.direccion || 'No disponible'}</p>
+  <p><strong>🌎 Ubicación:</strong> 
+    ${(data.departamento || '---')} / 
+    ${(data.provincia || '---')} / 
+    ${(data.distrito || '---')}
+  </p>
+  <p><strong>📆 Fecha de Inscripción:</strong> ${data.fecha_inscripcion || data.fecha_inicio_actividades || 'No disponible'}</p>
+  <p><strong>📌 Estado:</strong> ${data.estado || data.estado_contribuyente || 'No disponible'}</p>
+  <p><strong>💼 Condición:</strong> ${data.condicion || data.condicion_contribuyente || 'No disponible'}</p>
+`;
+
+      } catch (error) {
+        resultado.innerHTML = "<p style='color:red;'>🚫 Error al conectar con la API.</p>";
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+
+</html>

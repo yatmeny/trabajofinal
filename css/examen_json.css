@@ -1,0 +1,190 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #3498db 0%, #87ceeb 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Contenedor de información general */
+.info-general {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Título principal */
+#institucion {
+    color: #1e3a8a;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de información en línea */
+.info-linea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#nombre, #trabajo {
+    color: #1e40af;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: rgba(59, 130, 246, 0.15);
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid rgba(59, 130, 246, 0.4);
+}
+
+/* Títulos de secciones */
+h4 {
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    margin: 30px 0 15px 0;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilos de tablas */
+table {
+    width: 100%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Encabezados de tabla */
+th {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    padding: 15px 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    text-align: center;
+    position: relative;
+}
+
+th:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0ea5e9, #0284c7);
+}
+
+/* Celdas de tabla */
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+/* Filas alternadas */
+tbody tr:nth-child(even) {
+    background: rgba(191, 219, 254, 0.6);
+}
+
+tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Hover en filas */
+tbody tr:hover {
+    background: rgba(59, 130, 246, 0.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Específicos por tabla */
+#alumnos {
+    border: 3px solid #0ea5e9;
+}
+
+#cursos {
+    border: 3px solid #3b82f6;
+}
+
+#docentes {
+    border: 3px solid #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    #institucion {
+        font-size: 2rem;
+    }
+    
+    .info-linea {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #nombre, #trabajo {
+        font-size: 1.1rem;
+        width: 100%;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    th, td {
+        padding: 8px 6px;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-general, table, h4 {
+    animation: fadeInUp 0.6s ease forwards;
+}

@@ -1,0 +1,28 @@
+{
+  "estudiantes": [
+    {
+      "dni": "30111222",
+      "nombre": "Andrea",
+      "apellido": "Velásquez",
+      "edad": 18
+    },
+    {
+      "dni": "30122333",
+      "nombre": "Carlos",
+      "apellido": "Ramírez",
+      "edad": 20
+    },
+    {
+      "dni": "30133444",
+      "nombre": "Sofía",
+      "apellido": "Reyes",
+      "edad": 19
+    },
+    {
+      "dni": "30144555",
+      "nombre": "Diego",
+      "apellido": "López",
+      "edad": 21
+    }
+  ]
+}

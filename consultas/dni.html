@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta DNI</title>
+  <link rel="stylesheet" href="../css/estilos_dni.css">
+</head>
+<body>
+  <div class="consulta-container">
+    <h2>Consulta DNI</h2>
+    <input type="text" id="dni" placeholder="Ingrese DNI">
+    <button onclick="consultarDni()">Consultar</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    async function consultarDni() {
+      const dni = document.getElementById("dni").value.trim();
+      const resultado = document.getElementById("resultado");
+      const token = "0c0a92b87d7040529eb96693ef396440b717b1e38edb90fdf1eaff98b123eacd"; // Reemplaza con tu token
+
+      if (dni.length !== 8 || isNaN(dni)) {
+        resultado.innerHTML = "<p style='color:red;'>Ingrese un DNI válido de 8 dígitos.</p>";
+        return;
+      }
+
+      resultado.innerHTML = "Consultando...";
+
+      try {
+        const response = await fetch("https://apiperu.dev/api/dni", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ dni: dni })
+        });
+
+        const json = await response.json();
+
+        if (!json.success || !json.data) {
+          resultado.innerHTML = "<p style='color:red;'>DNI no encontrado o token inválido.</p>";
+          return;
+        }
+
+        const data = json.data;
+        resultado.innerHTML = `
+          <p><strong>DNI:</strong> ${data.numero}</p>
+          <p><strong>Nombre Completo:</strong> ${data.nombre_completo}</p>
+          <p><strong>Apellido Paterno:</strong> ${data.apellido_paterno}</p>
+          <p><strong>Apellido Materno:</strong> ${data.apellido_materno}</p>
+          <p><strong>Nombres:</strong> ${data.nombres}</p>
+          <p><strong>Código de verificación:</strong> ${data.codigo_verificacion}</p>
+        `;
+      } catch (error) {
+        resultado.innerHTML = "<p style='color:red;'>Error al conectar con la API.</p>";
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
